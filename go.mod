@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/sagernet/sing v0.7.16
-	github.com/sagernet/sing-box v1.12.17
+	github.com/sagernet/sing-box v1.12.18
 )
 
 require (
@@ -120,11 +120,11 @@ require (
 
 replace (
 	github.com/sagernet/sing => github.com/sagernet/sing v0.7.16
-	github.com/sagernet/sing-box => github.com/sagernet/sing-box v1.12.17
+	github.com/sagernet/sing-box => github.com/sagernet/sing-box v1.12.18
 	github.com/sagernet/sing-mux => github.com/sagernet/sing-mux v0.3.4
 	github.com/sagernet/sing-quic => github.com/sagernet/sing-quic v0.5.2
 	github.com/sagernet/sing-shadowtls => github.com/sagernet/sing-shadowtls v0.2.1-0.20250503051639-fcd445d33c11
 	github.com/sagernet/sing-tun => github.com/sagernet/sing-tun v0.7.9
 	github.com/sagernet/sing-vmess => github.com/sagernet/sing-vmess v0.2.7
-	github.com/sagernet/wireguard-go => github.com/sagernet/wireguard-go v0.0.1-beta.7
+	github.com/sagernet/wireguard-go => github.com/sagernet/wireguard-go v0.0.2-beta.1.0.20250917110311-16510ac47288
 )
