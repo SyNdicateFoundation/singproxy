@@ -596,15 +596,24 @@ func parseAnyTLS(out *option.AnyTLSOutboundOptions, u *url.URL) error {
 
 func parseTransport(params url.Values, host string) (*option.V2RayTransportOptions, error) {
 	transportType := strings.ToLower(params.Get("type"))
+	headerType := strings.ToLower(params.Get("headerType"))
+
+	if (transportType == "tcp" || transportType == "") && headerType == "http" {
+		transportType = "httpupgrade"
+	}
+
 	if idx := strings.IndexAny(transportType, "=@"); idx != -1 {
 		transportType = transportType[:idx]
 	}
+
 	if transportType == "xhttp" {
 		transportType = "httpupgrade"
 	}
+
 	if transportType == "" || transportType == "tcp" {
 		return nil, nil
 	}
+
 	transport := &option.V2RayTransportOptions{Type: transportType}
 	switch transport.Type {
 	case "ws":
@@ -623,8 +632,18 @@ func parseTransport(params url.Values, host string) (*option.V2RayTransportOptio
 		}
 		transport.GRPCOptions.ServiceName = serviceName
 	case "httpupgrade":
-		transport.HTTPUpgradeOptions.Host = params.Get("host")
-		transport.HTTPUpgradeOptions.Path = params.Get("path")
+		obfuscationHost := params.Get("host")
+		if obfuscationHost == "" {
+			obfuscationHost = host
+		}
+
+		path := params.Get("path")
+		if path == "" {
+			path = "/"
+		}
+
+		transport.HTTPUpgradeOptions.Host = obfuscationHost
+		transport.HTTPUpgradeOptions.Path = path
 		if transport.HTTPUpgradeOptions.Host != "" {
 			transport.HTTPUpgradeOptions.Headers = badoption.HTTPHeader{"Host": {transport.HTTPUpgradeOptions.Host}}
 		}

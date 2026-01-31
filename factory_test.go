@@ -94,6 +94,7 @@ func TestDirectConnection(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping live network test in short mode")
 	}
+
 	proxy, err := FromURL(time.Second*8, "direct")
 	if err != nil {
 		t.Fatalf("Failed to create direct proxy: %v", err)

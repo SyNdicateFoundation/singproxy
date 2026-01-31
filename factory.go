@@ -237,7 +237,6 @@ func (p *SingBoxProxy) DialContext(ctx context.Context, network string, addr *ne
 	go func() {
 		conn, err := p.outbound.DialContext(context.Background(), network, targetAddr)
 
-		// try to deliver result, or clean up if context/timeout fired first
 		select {
 		case resC <- connResult{conn, err}:
 		case <-ctx.Done():
