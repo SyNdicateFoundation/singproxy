@@ -64,6 +64,7 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/prometheus-community/pro-bing v0.4.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
+	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
 	github.com/safchain/ethtool v0.3.0 // indirect
 	github.com/sagernet/bbolt v0.0.0-20231014093535-ea5cb2fe9f0a // indirect
 	github.com/sagernet/cors v1.2.1 // indirect
@@ -119,6 +120,7 @@ require (
 )
 
 replace (
+	github.com/sagernet/quic-go => github.com/sagernet/quic-go v0.47.0
 	github.com/sagernet/sing => github.com/sagernet/sing v0.7.16
 	github.com/sagernet/sing-box => github.com/sagernet/sing-box v1.12.18
 	github.com/sagernet/sing-mux => github.com/sagernet/sing-mux v0.3.4
